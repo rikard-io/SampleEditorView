@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SampleEditor</title>
+    <style>
+    .noselect {
+      -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+         -khtml-user-select: none; /* Konqueror HTML */
+           -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome and Opera */
+    }
+    html,body{
+      background: #000;
+      color: white;
+    }
+    #info, .SampleEditor{
+      float:left;
+    }
+    .SampleEditor{
+      width: 640px;
+      height:320px;
+    }
+    </style>
+  </head>
+  <body>
+    Example adapted for retina displays
+
+    <div id="main" class="noselect"></div>
+    <div id="info" class="noselect"></div>
+
+    <script src="dist/SampleEditor.js"></script>
+
+    <script>
+
+    let audioContext = new AudioContext()
+
+    function loadBuffer( url ){
+
+      return new Promise(function(resolve,reject){
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.responseType = 'arraybuffer';
+
+        // Decode asynchronously
+        request.onload = function() {
+          audioContext.decodeAudioData(request.response, function(buffer) {
+            resolve( buffer );
+          }, reject);
+        }
+        request.send();
+      })
+
+    }
+
+    let editor = new SampleEditor( {
+      color: '#222',
+      background: '#999',
+      width: 1280,
+      height: 640,
+      highRes: true
+    } )
+
+    main.appendChild( editor.canvas )
+
+    loadBuffer( 'https://upload.wikimedia.org/wikipedia/commons/b/bb/O_Na_Byddai%27n_Haf_o_Hyd_-_Various_Artists.ogg' ).then(function(buffer){
+
+      editor.buffer = buffer;
+
+      editor.props.$keys.forEach( function(k){
+        let el = document.createElement('div')
+        el.innerHTML = '<div class="row">' + k + ': <span id="info-' + k + '">0</span></div>';
+        info.appendChild(el)
+        editor.props.$observe(k, function( v ){
+          document.getElementById('info-'+k).innerHTML = v
+        })
+
+      });
+
+      window.editor = editor
+
+
+    })
+    </script>
+
+  </body>
+</html>
