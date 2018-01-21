@@ -10,6 +10,10 @@ Audio / Waveform UI for displaying WebAudio AudioBuffers with zoom, select and l
 
 This repo is in it's early stage. May not be appropriate for production.
 
+## Install
+
+`npm i -D sample-editor-view` or `yarn add -D sample-editor-view`
+
 ## Features
 
 * Adjustable detail - Fast rendering when precision is not important
