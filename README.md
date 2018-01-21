@@ -1,8 +1,10 @@
+![Travis](https://travis-ci.org/rikard-io/SampleEditor.svg?branch=master)
+
 # WebAudio SampleEditor
 
 Audio / Waveform UI for displaying WebAudio AudioBuffers with zoom, select and looping markers interaction.
 
-![Travis](https://travis-ci.org/rikard-io/SampleEditor.svg?branch=master)
+![Alt text](/screenshot.gif?raw=true "Screenshot")
 
 ## Features
 

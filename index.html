@@ -14,12 +14,42 @@
                                       supported by Chrome and Opera */
     }
     html,body{
-      background: #000;
-      color: white;
+      background: #fff;
+      color: #349;
+      font-size: 12px;
+      font-family: helvetica;
+    }
+
+    h1{
+      margin: 0.5rem;
+      text-transform: uppercase;
     }
     #info, .SampleEditor{
       float:left;
+      margin: 0.5rem;
     }
+
+    .label, .value {
+      display: inline-block;
+      padding: 0.5rem;
+      font-weight: 100;
+      font-size: 0.7rem;
+    }
+
+    .label {
+      background: #222;
+      color: #fff;
+      width: 120px;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    .value {
+      text-align: center;
+      background: #ddd;
+      width: 120px;
+    }
+
     .SampleEditor{
       width: 640px;
       height:320px;
@@ -27,7 +57,7 @@
     </style>
   </head>
   <body>
-    Example adapted for retina displays
+    <h1>Example</h1>
 
     <div id="main" class="noselect"></div>
     <div id="info" class="noselect"></div>
@@ -58,7 +88,7 @@
 
     let editor = new SampleEditor( {
       color: '#222',
-      background: '#999',
+      background: '#ddd',
       width: 1280,
       height: 640,
       highRes: true
@@ -72,7 +102,7 @@
 
       editor.props.$keys.forEach( function(k){
         let el = document.createElement('div')
-        el.innerHTML = '<div class="row">' + k + ': <span id="info-' + k + '">0</span></div>';
+        el.innerHTML = '<div class="row"><span class="label">' + k + ':</span><span class="value" id="info-' + k + '">0</span></div>';
         info.appendChild(el)
         editor.props.$observe(k, function( v ){
           document.getElementById('info-'+k).innerHTML = v
