@@ -100,6 +100,20 @@ export default {
     }
 
     return this;
+  },
+
+  /**
+  * Triggered on the next heartbeat to avoid mass triggering
+  * when changing multiple props at once
+  */
+  $triggerDeferred(event) {
+    this._changeBatchTimers = this._changeBatchTimers || {};
+    if (this._changeBatchTimers[ event ] == null) {
+      this._changeBatchTimers[ event ] = setTimeout(()=>{
+        this.$trigger(event);
+        this._changeBatchTimers[ event ] = null;
+      }, 50);
+    }
   }
 
 };

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>SampleEditor</title>
+    <title>SampleEditorView</title>
     <style>
     .noselect {
       -webkit-touch-callout: none; /* iOS Safari */
@@ -24,7 +24,7 @@
       margin: 0.5rem;
       text-transform: uppercase;
     }
-    #info, .SampleEditor{
+    #info, .SampleEditorView{
       float:left;
       margin: 0.5rem;
     }
@@ -50,7 +50,7 @@
       width: 120px;
     }
 
-    .SampleEditor{
+    .SampleEditorView{
       width: 640px;
       height:320px;
     }
@@ -62,7 +62,7 @@
     <div id="main" class="noselect"></div>
     <div id="info" class="noselect"></div>
 
-    <script src="dist/SampleEditor.js"></script>
+    <script src="dist/SampleEditorView.js"></script>
 
     <script>
 
@@ -86,7 +86,7 @@
 
     }
 
-    let editor = new SampleEditor( {
+    let editor = new SampleEditorView( {
       color: '#222',
       background: '#ddd',
       width: 1280,

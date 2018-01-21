@@ -1,5 +1,5 @@
 /**
- * @Author: Rikard Lindstrom <hi@rikard.io>
+ * @Author: Rikard Lindstrom <code@rikard.io>
  * @Filename: Waveform.js
  */
 

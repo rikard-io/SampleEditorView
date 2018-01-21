@@ -1,7 +1,7 @@
 /* global describe, it, before */
 
 import chai from 'chai';
-import SampleEditor from '../src/SampleEditor.js';
+import SampleEditorView from '../src/SampleEditorView.js';
 
 chai.expect();
 
@@ -9,15 +9,15 @@ const expect = chai.expect;
 
 // ... to do :)
 
-let sampleEditor;
+let sampleEditorView;
 
-describe('SampleEditor', () => {
+describe('SampleEditorView', () => {
   before(() => {
-    sampleEditor = new SampleEditor();
+    sampleEditorView = new SampleEditorView();
   });
   describe('props', () => {
     it('should be an object', () => {
-      expect(sampleEditor.props).to.be.an('object');
+      expect(sampleEditorView.props).to.be.an('object');
     });
   });
 });

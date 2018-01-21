@@ -1,6 +1,6 @@
 /**
 * Base class for all ui
-* @Author: Rikard Lindstrom <hi@rikard.io>
+* @Author: Rikard Lindstrom <code@rikard.io>
 * @Filename: CanvasUI.js
 */
 

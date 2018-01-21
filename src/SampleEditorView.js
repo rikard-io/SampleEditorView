@@ -1,7 +1,7 @@
 /**
  * Main program, compiles everything onto one canvas and handles interaction
- * @Author: Rikard Lindstrom <hi@rikard.io>
- * @Filename: SampleEditor.js
+ * @Author: Rikard Lindstrom <code@rikard.io>
+ * @Filename: SampleEditorView.js
  */
 
 import CanvasUI from './CanvasUI';
@@ -35,7 +35,7 @@ const defaultProperties = {
   buffer: null
 };
 
-class SampleEditor extends CanvasUI {
+class SampleEditorView extends CanvasUI {
 
   constructor(props) {
 
@@ -72,7 +72,7 @@ class SampleEditor extends CanvasUI {
 
     this.zoomMarker.props.$observe('visible', this.renderIfDirty, this);
 
-    this.canvas.classList.add('SampleEditor');
+    this.canvas.classList.add('SampleEditorView');
   }
 
   render() {
@@ -409,4 +409,4 @@ class SampleEditor extends CanvasUI {
   }
 }
 
-export default SampleEditor;
+export default SampleEditorView;

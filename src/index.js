@@ -1,11 +1,11 @@
 /**
- * @Author: Rikard Lindstrom <hi@rikard.io>
+ * @Author: Rikard Lindstrom <code@rikard.io>
  * @Filename: index.js
  */
 
 'use strict';
-import SampleEditor from './SampleEditor';
+import SampleEditorView from './SampleEditorView';
 
 // expose on window
-window.SampleEditor = SampleEditor;
-export default SampleEditor;
+window.SampleEditorView = SampleEditorView;
+export default SampleEditorView;

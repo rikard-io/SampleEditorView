@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("SampleEditor", [], factory);
+		define("SampleEditorView", [], factory);
 	else if(typeof exports === 'object')
-		exports["SampleEditor"] = factory();
+		exports["SampleEditorView"] = factory();
 	else
-		root["SampleEditor"] = factory();
+		root["SampleEditorView"] = factory();
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -86,13 +86,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Base class for all ui
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * @Author: Rikard Lindstrom <hi@rikard.io>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * @Author: Rikard Lindstrom <code@rikard.io>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @Filename: CanvasUI.js
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
 
-var _props = __webpack_require__(3);
+var _Props = __webpack_require__(3);
 
-var _props2 = _interopRequireDefault(_props);
+var _Props2 = _interopRequireDefault(_Props);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -115,7 +115,7 @@ var CanvasUI = function () {
 
     _classCallCheck(this, CanvasUI);
 
-    this.props = new _props2.default(defaultProperties, defaults, props);
+    this.props = new _Props2.default(defaultProperties, defaults, props);
     this.props.$on('change', function (_) {
       _this.dirty = true;
     });
@@ -164,7 +164,7 @@ module.exports = exports['default'];
 
 "use strict";
 /**
- * @Author: Rikard Lindstrom <hi@rikard.io>
+ * @Author: Rikard Lindstrom <code@rikard.io>
  * @Filename: index.js
  */
 
@@ -174,17 +174,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _SampleEditor = __webpack_require__(2);
+var _SampleEditorView = __webpack_require__(2);
 
-var _SampleEditor2 = _interopRequireDefault(_SampleEditor);
+var _SampleEditorView2 = _interopRequireDefault(_SampleEditorView);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // expose on window
-if (undefined !== undefined) {
-  undefined.SampleEditor = _SampleEditor2.default;
-}
-exports.default = _SampleEditor2.default;
+window.SampleEditorView = _SampleEditorView2.default;
+exports.default = _SampleEditorView2.default;
 module.exports = exports['default'];
 
 /***/ }),
@@ -228,8 +226,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * Main program, compiles everything onto one canvas and handles interaction
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <hi@rikard.io>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Filename: SampleEditor.js
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <code@rikard.io>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Filename: SampleEditorView.js
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
 var defaultProperties = {
@@ -238,6 +236,8 @@ var defaultProperties = {
   offset: 0,
   background: '#ddd',
   color: '#222',
+  selectColor: '#ddd',
+  selectBackground: '#222',
   width: 640,
   height: 320,
   channel: 0,
@@ -253,16 +253,15 @@ var defaultProperties = {
   selectEnd: 0,
   quantize: 0.0125,
   buffer: null
-
 };
 
-var SampleEditor = function (_CanvasUI) {
-  _inherits(SampleEditor, _CanvasUI);
+var SampleEditorView = function (_CanvasUI) {
+  _inherits(SampleEditorView, _CanvasUI);
 
-  function SampleEditor(props) {
-    _classCallCheck(this, SampleEditor);
+  function SampleEditorView(props) {
+    _classCallCheck(this, SampleEditorView);
 
-    var _this = _possibleConstructorReturn(this, (SampleEditor.__proto__ || Object.getPrototypeOf(SampleEditor)).call(this, defaultProperties, props));
+    var _this = _possibleConstructorReturn(this, (SampleEditorView.__proto__ || Object.getPrototypeOf(SampleEditorView)).call(this, defaultProperties, props));
 
     _this.waveForm = new _Waveform2.default({});
     _this.ruler = new _Ruler2.default({});
@@ -301,11 +300,11 @@ var SampleEditor = function (_CanvasUI) {
 
     _this.zoomMarker.props.$observe('visible', _this.renderIfDirty, _this);
 
-    _this.canvas.classList.add('SampleEditor');
+    _this.canvas.classList.add('SampleEditorView');
     return _this;
   }
 
-  _createClass(SampleEditor, [{
+  _createClass(SampleEditorView, [{
     key: 'render',
     value: function render() {
       var ctx = this.ctx;
@@ -648,10 +647,10 @@ var SampleEditor = function (_CanvasUI) {
     }
   }]);
 
-  return SampleEditor;
+  return SampleEditorView;
 }(_CanvasUI3.default);
 
-exports.default = SampleEditor;
+exports.default = SampleEditorView;
 module.exports = exports['default'];
 
 /***/ }),
@@ -667,7 +666,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       * "Magic" Properties with bindings to react to changes
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @Author: Rikard Lindstrom <hi@rikard.io>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @Author: Rikard Lindstrom <code@rikard.io>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       * @Filename: Props.js
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       */
 
@@ -682,6 +681,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Props = function () {
+
+  /**
+  * @constructor
+  * @param {Object[]]} props - Properties that will  me merged right to left.
+  */
   function Props() {
     var _this = this;
 
@@ -708,41 +712,36 @@ var Props = function () {
           var oldV = propsObject[k];
 
           propsObject[k] = v;
-          this.$triggerDeferedChange();
+          this.$triggerDeferred('defered_change');
           this.$trigger('change', k, v);
           this.$trigger('change:' + k, v, oldV);
         }
       });
     });
-    this.$changeBatchTimer = null;
+
     this.$privateProps = propsObject;
     this.$keys = Object.keys(propsObject);
   }
 
-  _createClass(Props, [{
-    key: '$triggerDeferedChange',
-    value: function $triggerDeferedChange() {
-      var _this2 = this;
+  /**
+  * Observe a value for changes, much like .$on but also initializes the callback
+  * with current value
+  * @param {string|string[]]} key - Key or keys to observe
+  * @param {function} cb - Callback
+  * @param {Object} ctx - Context for callback
+  */
 
-      // change is triggered on the next heartbeat to avoid mass triggering
-      // when changing multiple props at once
-      if (this.$changeBatchTimer === null) {
-        this.$changeBatchTimer = setTimeout(function () {
-          _this2.$trigger('defered_change');
-          _this2.$changeBatchTimer = null;
-        }, 50);
-      }
-    }
-  }, {
+
+  _createClass(Props, [{
     key: '$observe',
     value: function $observe(key, cb) {
-      var _this3 = this;
+      var _this2 = this;
 
       var ctx = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this;
 
       if (Array.isArray(key)) {
         key.forEach(function (k) {
-          return _this3.$observe(k, cb, ctx);
+          return _this2.$observe(k, cb, ctx);
         });
         return this;
       }
@@ -751,41 +750,63 @@ var Props = function () {
       this.$on('change:' + key, cb, ctx);
       return this;
     }
+
+    /**
+    * Unobserve a value for changes
+    * @param {string|string[]]} key - Key or keys to observe
+    * @param {function} cb - Callback
+    * @param {Object} ctx - Context for callback
+    */
+
   }, {
     key: '$unobserve',
     value: function $unobserve(key, cb, ctx) {
-      var _this4 = this;
+      var _this3 = this;
 
       if (Array.isArray(key)) {
         key.forEach(function (k) {
-          return _this4.$unobserve(k, cb, ctx);
+          return _this3.$unobserve(k, cb, ctx);
         });
         return this;
       }
       this.$off('change:' + key, cb, ctx);
       return this;
     }
+
+    /**
+    * Wrapper for $observe, sets the properties on the target instead of using a callback
+    * @param {Object} target - Target context
+    * @param {string|string[]]} key - Key or keys to observe
+    */
+
   }, {
     key: '$bind',
-    value: function $bind(ctx) {
-      var _this5 = this;
+    value: function $bind(target) {
+      var _this4 = this;
 
       for (var _len2 = arguments.length, keys = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
         keys[_key2 - 1] = arguments[_key2];
       }
 
       keys.forEach(function (k) {
-        _this5.$observe(k, function (v) {
-          ctx[k] = v;
+        _this4.$observe(k, function (v) {
+          target[k] = v;
         });
       });
 
       return this;
     }
+
+    /**
+    * Wrapper for $unobserve
+    * @param {Object} target - Target context
+    * @param {string|string[]]} key - Key or keys to observe
+    */
+
   }, {
     key: '$unbind',
-    value: function $unbind(ctx) {
-      var _this6 = this;
+    value: function $unbind(target) {
+      var _this5 = this;
 
       for (var _len3 = arguments.length, keys = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
         keys[_key3 - 1] = arguments[_key3];
@@ -793,27 +814,41 @@ var Props = function () {
 
       if (keys && keys.length) {
         keys.forEach(function (k) {
-          _this6.$unobserve(k, null, ctx);
+          _this5.$unobserve(k, null, target);
         });
       } else {
-        this.$off(null, null, ctx);
+        this.$off(null, null, target);
       }
 
       return this;
     }
+
+    /**
+    * Reversed $bind:ing between Props objects with filters.
+    * @param {Props} otherProps - Another instance of Props
+    * @param {Object} map - Mapping specification in the form of {propName: filterFn}
+    */
+
   }, {
     key: '$map',
     value: function $map(otherProps, map) {
-      var _this7 = this;
+      var _this6 = this;
 
       Object.keys(map).forEach(function (k) {
         otherProps.$observe(k, function (v) {
-          _this7[k] = map[k](v);
+          _this6[k] = map[k](v);
         });
       });
 
       return this;
     }
+
+    /**
+    * Reversed $bind:ing between Props objects.
+    * @param {Props} otherProps - Another instance of Props
+    * @param {string[]]} keys - Keys to observe
+    */
+
   }, {
     key: '$link',
     value: function $link(otherProps) {
@@ -825,6 +860,13 @@ var Props = function () {
       otherProps.$bind.apply(otherProps, [this].concat(_toConsumableArray(keys)));
       return this;
     }
+
+    /**
+    * Reversed $unbind:ing between Props objects with filters.
+    * @param {Props} otherProps - Another instance of Props
+    * @param {string[]]} keys - Keys to stop observing
+    */
+
   }, {
     key: '$unlink',
     value: function $unlink(otherProps) {
@@ -964,8 +1006,23 @@ exports.default = {
     }
 
     return this;
-  }
+  },
 
+  /**
+  * Triggered on the next heartbeat to avoid mass triggering
+  * when changing multiple props at once
+  */
+  $triggerDeferred: function $triggerDeferred(event) {
+    var _this2 = this;
+
+    this._changeBatchTimers = this._changeBatchTimers || {};
+    if (this._changeBatchTimers[event] == null) {
+      this._changeBatchTimers[event] = setTimeout(function () {
+        _this2.$trigger(event);
+        _this2._changeBatchTimers[event] = null;
+      }, 50);
+    }
+  }
 };
 module.exports = exports['default'];
 
@@ -993,7 +1050,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <hi@rikard.io>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <code@rikard.io>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @Filename: Waveform.js
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
@@ -1208,7 +1265,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <hi@rikard.io>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <code@rikard.io>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @Filename: Ruler.js
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
@@ -1352,7 +1409,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <hi@rikard.io>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <code@rikard.io>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @Filename: LineMarker.js
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
@@ -1443,7 +1500,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <hi@rikard.io>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Author: Rikard Lindstrom <code@rikard.io>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @Filename: LoopMarker.js
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
@@ -1486,4 +1543,4 @@ module.exports = exports['default'];
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=SampleEditor.js.map
+//# sourceMappingURL=SampleEditorView.js.map

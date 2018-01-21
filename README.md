@@ -1,8 +1,8 @@
-![Travis](https://travis-ci.org/rikard-io/SampleEditor.svg?branch=master)
+![Travis](https://travis-ci.org/rikard-io/SampleEditorView.svg?branch=master)
 
-# WebAudio SampleEditor
+# WebAudio SampleEditorView
 
-Audio / Waveform UI for displaying WebAudio AudioBuffers with zoom, select and looping markers interaction.
+Audio / Waveform UI for displaying WebAudio AudioBuffers with zoom, select and looping markers interaction. Much like what you would find in a DAW.
 
 ![Alt text](/screenshot.gif?raw=true "Screenshot")
 
@@ -28,7 +28,7 @@ Probably better performance-wise, but much bigger in scope. Also missing some mo
 
 ### Create / Init:
 ```
-let editor = new SampleEditor({...})
+let editor = new SampleEditorView({...})
 
 // ... load / create buffer
 
@@ -68,8 +68,8 @@ Setting a property will also cause a rerendering of the updated part.
 ## Developing
 
 * Run any dev server or the file system
-* `yarn build` or `npm run build` - produces production version of SampleEditor under the `dist` folder
-* `yarn dev` or `npm run dev` - produces development version SampleEditor and runs a watcher
+* `yarn build` or `npm run build` - produces production version of SampleEditorView under the `dist` folder
+* `yarn dev` or `npm run dev` - produces development version SampleEditorView and runs a watcher
 * `yarn test` or `npm run test` - runs the to-do-tests :)
 * `yarn test:watch` or `npm run test:watch` - same as above but in a watch mode
 
