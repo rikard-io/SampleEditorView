@@ -10,6 +10,9 @@ Audio / Waveform UI for displaying WebAudio AudioBuffers with zoom, select and l
 
 This repo is in it's early stage. May not be appropriate for production.
 
+## Try It
+[Live Demo](https://rawgit.com/rikard-io/SampleEditorView/master/index.html)
+
 ## Install
 
 `npm i -D sample-editor-view` or `yarn add -D sample-editor-view`
