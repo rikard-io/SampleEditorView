@@ -2,7 +2,7 @@
 
 Audio / Waveform UI for displaying WebAudio AudioBuffers with zoom, select and looping markers interaction.
 
-![Travis](https://travis-ci.org/rikard-io/sampleeditor.svg?branch=master)
+![Travis](https://travis-ci.org/rikard-io/SampleEditor.svg?branch=master)
 
 ## Features
 
