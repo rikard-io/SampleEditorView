@@ -16,6 +16,8 @@ const defaultProperties = {
   offset: 0,
   background: '#ddd',
   color: '#222',
+  selectColor: '#ddd',
+  selectBackground: '#222',
   width: 640,
   height: 320,
   channel: 0,
@@ -31,7 +33,6 @@ const defaultProperties = {
   selectEnd: 0,
   quantize: 0.0125,
   buffer: null
-
 };
 
 class SampleEditor extends CanvasUI {
