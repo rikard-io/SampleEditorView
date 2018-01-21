@@ -4,7 +4,7 @@
 * @Filename: CanvasUI.js
 */
 
-import Props from './props';
+import Props from './Props';
 
 const defaultProperties = {
   width: 640,
