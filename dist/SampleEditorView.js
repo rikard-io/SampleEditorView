@@ -318,7 +318,9 @@ var SampleEditorView = function (_CanvasUI) {
 
       this.loopLengthMarker.props.width = this._timeToPixel(this.props.loopEnd) - this._timeToPixel(this.props.loopStart);
 
-      ctx.drawImage(this.loopLengthMarker.renderIfDirty().canvas, this._timeToPixel(this.props.loopStart), 20);
+      if (this.loopLengthMarker.props.width > 0) {
+        ctx.drawImage(this.loopLengthMarker.renderIfDirty().canvas, this._timeToPixel(this.props.loopStart), 20);
+      }
       ctx.drawImage(this.loopStartMarker.renderIfDirty().canvas, this._timeToPixel(this.props.loopStart), 20);
       ctx.drawImage(this.loopEndMarker.renderIfDirty().canvas, this._timeToPixel(this.props.loopEnd) - this.loopEndMarker.props.width, 20);
     }
@@ -326,9 +328,12 @@ var SampleEditorView = function (_CanvasUI) {
     key: '_timeToPixel',
     value: function _timeToPixel(time) {
       time -= this.props.offset;
+      if (time === 0 || this.displayDuration === 0) {
+        return 1;
+      }
       var px = time / this.displayDuration * this.props.width;
 
-      return Math.round(px);
+      return Math.max(1, Math.round(px));
     }
   }, {
     key: '_pixelToTime',

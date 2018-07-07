@@ -1,6 +1,6 @@
 {
   "name": "sample-editor-view",
-  "version": "1.0.0",
+  "version": "1.0.0-b.1",
   "description": "A Canvas Renderer / Editor UI for AudioBuffers",
   "main": "dist/SampleEditorView.js",
   "scripts": {
